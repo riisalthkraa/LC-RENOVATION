@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Logo LC Rénovation Animé</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & PAGE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    /* ===== CONTENEUR LOGO ===== */
+    .lc-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      width: 340px;
+    }
+
+    /* ===== ICÔNE TOITS SVG ===== */
+    .lc-icon {
+      width: 220px;
+      margin-bottom: 8px;
+      overflow: visible;
+    }
+
+    /* Toit gauche petit */
+    .roof-left {
+      animation: roofSlideLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    /* Toit droit grand */
+    .roof-right {
+      animation: roofSlideRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+    }
+    /* Ligne décorative ondulée */
+    .roof-wave {
+      animation: waveReveal 0.9s ease 0.5s both;
+    }
+
+    @keyframes roofSlideLeft {
+      from { opacity: 0; transform: translateX(-30px) translateY(-20px); }
+      to   { opacity: 1; transform: translateX(0) translateY(0); }
+    }
+    @keyframes roofSlideRight {
+      from { opacity: 0; transform: translateX(30px) translateY(-20px); }
+      to   { opacity: 1; transform: translateX(0) translateY(0); }
+    }
+    @keyframes waveReveal {
+      from { opacity: 0; stroke-dashoffset: 300; }
+      to   { opacity: 1; stroke-dashoffset: 0; }
+    }
+
+    /* ===== TEXTE PRINCIPAL ===== */
+    .lc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      animation: titleReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.7s both;
+    }
+    .lc-title .lc {
+      color: #b91c1c;
+    }
+    .lc-title .reno {
+      color: #1a1a1a;
+    }
+
+    @keyframes titleReveal {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== SOUS-TITRE ===== */
+    .lc-subtitle {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: #b91c1c;
+      text-transform: uppercase;
+      margin-top: 4px;
+      animation: subtitleReveal 0.6s ease 1s both;
+    }
+
+    @keyframes subtitleReveal {
+      from { opacity: 0; letter-spacing: 0.4em; }
+      to   { opacity: 1; letter-spacing: 0.22em; }
+    }
+
+    /* ===== LIGNE SÉPARATRICE ===== */
+    .lc-divider {
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #b91c1c, transparent);
+      margin: 10px 0 8px;
+      animation: dividerExpand 0.6s ease 1.2s both;
+    }
+
+    @keyframes dividerExpand {
+      from { width: 0; opacity: 0; }
+      to   { width: 200px; opacity: 1; }
+    }
+
+    /* ===== COORDONNÉES ===== */
+    .lc-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lc-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+      font-weight: 400;
+      opacity: 0;
+      animation: contactFadeUp 0.5s ease forwards;
+    }
+    .lc-contact-item:nth-child(1) { animation-delay: 1.4s; }
+    .lc-contact-item:nth-child(2) { animation-delay: 1.6s; }
+
+    .lc-contact-item .icon {
+      width: 22px;
+      height: 22px;
+      background: #b91c1c;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .lc-contact-item .icon svg {
+      width: 12px;
+      height: 12px;
+      fill: white;
+    }
+
+    @keyframes contactFadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== BOUCLE SUBTILE : légère respiration sur l'icône ===== */
+    .lc-icon {
+      animation: breathe 4s ease-in-out 2.5s infinite alternate;
+    }
+    /* On applique aussi l'entrée initiale avec transform-origin centré */
+    @keyframes breathe {
+      from { transform: scale(1) translateY(0); }
+      to   { transform: scale(1.03) translateY(-2px); }
+    }
+
+    /* ===== SHIMMER sur le titre en boucle ===== */
+    .lc-title .reno {
+      position: relative;
+      overflow: hidden;
+    }
+    .lc-title .reno::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 4s ease 3s infinite;
+    }
+    @keyframes shimmer {
+      0%   { left: -100%; }
+      40%  { left: 130%; }
+      100% { left: 130%; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- =============================================
+  BLOC À COPIER-COLLER DANS TON INDEX.HTML
+  (inclure aussi le <style> ci-dessus dans ton <head>)
+  ============================================= -->
+
+<div class="lc-logo">
+
+  <!-- ICÔNE TOITS -->
+  <svg class="lc-icon" viewBox="0 0 220 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- Toit GAUCHE (petit) -->
+    <g class="roof-left">
+      <!-- Toiture rouge gauche -->
+      <polygon points="28,70 72,30 116,70" fill="#b91c1c"/>
+      <!-- Bandeau noir sur le dessus -->
+      <polygon points="28,70 72,30 116,70 110,70 72,38 34,70" fill="#1a1a1a" opacity="0.85"/>
+      <!-- Fenêtre gauche carrée -->
+      <rect x="56" y="52" width="14" height="14" rx="1" fill="#b91c1c" stroke="#fff" stroke-width="1"/>
+      <line x1="63" y1="52" x2="63" y2="66" stroke="#fff" stroke-width="1"/>
+      <line x1="56" y1="59" x2="70" y2="59" stroke="#fff" stroke-width="1"/>
+    </g>
+
+    <!-- Toit DROIT (grand, décalé) -->
+    <g class="roof-right">
+      <!-- Toiture rouge droite plus grande -->
+      <polygon points="70,75 124,22 178,75" fill="#b91c1c"/>
+      <!-- Bandeau noir sur le dessus -->
+      <polygon points="70,75 124,22 178,75 171,75 124,30 77,75" fill="#1a1a1a" opacity="0.85"/>
+      <!-- Fenêtre droite carrée -->
+      <rect x="108" y="55" width="16" height="16" rx="1" fill="#b91c1c" stroke="#fff" stroke-width="1"/>
+      <line x1="116" y1="55" x2="116" y2="71" stroke="#fff" stroke-width="1"/>
+      <line x1="108" y1="63" x2="124" y2="63" stroke="#fff" stroke-width="1"/>
+    </g>
+
+    <!-- Ligne ondulée décorative -->
+    <path class="roof-wave"
+      d="M20,80 Q60,72 100,78 Q140,84 180,76 Q200,73 210,75"
+      stroke="#1a1a1a" stroke-width="2.5" fill="none"
+      stroke-dasharray="300" stroke-dashoffset="300"
+    />
+    <path class="roof-wave"
+      d="M24,84 Q64,77 104,82 Q144,87 184,80"
+      stroke="#b91c1c" stroke-width="1.2" fill="none" opacity="0.6"
+      stroke-dasharray="250" stroke-dashoffset="250"
+      style="animation-delay: 0.6s"
+    />
+
+  </svg>
+
+  <!-- NOM -->
+  <div class="lc-title">
+    <span class="lc">LC&nbsp;</span><span class="reno">RÉNOVATION</span>
+  </div>
+
+  <!-- SOUS-TITRE -->
+  <div class="lc-subtitle">Plaquiste &amp; Peinture</div>
+
+  <!-- SÉPARATEUR -->
+  <div class="lc-divider"></div>
+
+  <!-- CONTACTS -->
+  <div class="lc-contact">
+    <div class="lc-contact-item">
+      <span class="icon">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      </span>
+      <span>06 02 28 24 30</span>
+    </div>
+    <div class="lc-contact-item">
+      <span class="icon">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </span>
+      <span>batimentds@hotmail.com</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
